@@ -18,6 +18,7 @@ class AddNewName(Resource)
 
 
 api.add_resource(HelloWorld, '/HelloWorld')
+api.add_resource(AddNewName, '/AddNewName')
 
 if __name__ == '__main__':
     app.run(debug=True)
