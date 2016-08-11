@@ -5,7 +5,7 @@ app = Flask(__name__)
 api = Api(app)
 
 class HelloWorld(Resource):
-    def post(self):
+    def get(self):
         return {'Message': 'Hello World'}
 
 api.add_resource(HelloWorld, '/HelloWorld')
