@@ -27,25 +27,22 @@ class AddNewName(Resource):
 
 class CreateNewPokemon(Resource):
 	def post(self):
-		try:
 			parser = reqparse.RequestParser()
 			parser.add_argument('name', type=str, help='Name to create Pokemon name')
 			parser.add_argument('cp', type=str, help='Cp to create cp of Pokemon')
 			args = parser.parse_args()
 
 			conn = mysql.connect()
-	        cursor = conn.cursor()
-	        cursor.callproc('spCreatePokemon',(args['name'],args['cp']))
-	        data = cursor.fetchall()
+			cursor = conn.cursor()
+			cursor.callproc('spCreatePokemon',(args['name'],args['cp']))
+			data = cursor.fetchall()
 
-	        if len(data) is 0:
-	        	conn.commit()
-	        	return {'Message': 'Pokemon creation success'}
-	        else:
-	        	return {'Message': 'Fail'}
+			if len(data) is 0:
+				conn.commit()
+				return {'Message': 'Pokemon creation success'}
+			else:
+				return {'Message': 'Fail'}
 
-	    except Exception as e:
-        	return {'error': str(e)}
 
 
 api.add_resource(HelloWorld, '/HelloWorld')
