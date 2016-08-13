@@ -45,6 +45,14 @@ class CreateNewPokemon(Resource):
 			else:
 				return {'Message': 'Fail'}
 
+class Pokemons(Resource)
+	def get(self)
+		conn = mysql.connect()
+		cursor = conn.cursor()
+		cursor.callproc('spPokemons',))
+		data = cursor.fetchall()
+
+
 
 
 api.add_resource(HelloWorld, '/HelloWorld')
