@@ -45,19 +45,29 @@ class CreateNewPokemon(Resource):
 			else:
 				return {'Message': 'Fail'}
 
-class Pokemons(Resource)
-	def get(self)
+class Pokemons(Resource):
+	def get(self):
 		conn = mysql.connect()
 		cursor = conn.cursor()
-		cursor.callproc('spPokemons',))
+		cursor.callproc('spPokemons',)
 		data = cursor.fetchall()
 
+		items_list=[];
+        	for item in data:
+	            i = {
+	                'name':item[0],
+	                'cp':item[1]
+	            }
+	            items_list.append(i)
+
+		return {'Pokemos': items_list}
 
 
 
 api.add_resource(HelloWorld, '/HelloWorld')
 api.add_resource(AddNewName, '/AddNewName')
 api.add_resource(CreateNewPokemon, '/CreateNewPokemon')
+api.add_resource(Pokemons, '/Pokemons')
 
 if __name__ == '__main__':
     app.run(debug=True)
