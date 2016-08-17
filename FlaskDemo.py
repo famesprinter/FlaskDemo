@@ -60,7 +60,7 @@ class Pokemons(Resource):
 	            }
 	            items_list.append(i)
 
-		return {'Pokemos': items_list}
+		return {'Pokemons': items_list}
 
 
 
